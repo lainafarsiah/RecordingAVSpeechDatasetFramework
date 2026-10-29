@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard - AV Recording</title>
+    <link rel="stylesheet" href="/static/style.css?v=20261023-2">
+</head>
+<body>
+
+<div class="container admin-page-container">
+
+    <h1>Admin Dashboard</h1>
+
+    <nav class="admin-nav">
+        <button type="button" id="show-credentials-btn">Participant Login</button>
+        <button type="button" id="show-dashboard-btn" class="active">Participant Progress</button>
+        <a href="{{ADMIN_BASE_PATH}}/report.html">Evaluation Reports</a>
+        <a href="{{ADMIN_BASE_PATH}}/preprocessing.html">Preprocessing</a>
+        <a href="{{ADMIN_BASE_PATH}}/readiness.html">Data Readiness</a>
+        <a href="{{ADMIN_BASE_PATH}}/logout">Logout</a>
+    </nav>
+
+    <div id="dashboard-page">
+    <section class="card">
+        <h2>Dataset Summary</h2>
+
+        <div class="summary-grid">
+            <div class="summary-box">
+                <h3 id="total-participants">0</h3>
+                <p>Total Participants</p>
+            </div>
+
+            <div class="summary-box">
+                <h3 id="total-recordings">0</h3>
+                <p>Total Recordings</p>
+            </div>
+
+            <div class="summary-box">
+                <h3 id="completed-participants">0</h3>
+                <p>Completed Participants (100%)</p>
+            </div>
+        </div>
+
+        <button onclick="loadAdminSummary()">Refresh</button>
+    </section>
+
+    <section class="card">
+        <h2>Participants</h2>
+
+        <p>Click a column heading to sort. Check Validated after your review is complete.</p>
+        <table id="participants-table">
+            <thead>
+                <tr>
+                    <th aria-sort="none"><button type="button" class="participant-sort-btn" data-sort="participant_code">Participant<span class="sort-indicator" aria-hidden="true"> ↕</span></button></th>
+                    <th aria-sort="none"><button type="button" class="participant-sort-btn" data-sort="age_group">Age Group<span class="sort-indicator" aria-hidden="true"> ↕</span></button></th>
+                    <th aria-sort="none"><button type="button" class="participant-sort-btn" data-sort="gender">Gender<span class="sort-indicator" aria-hidden="true"> ↕</span></button></th>
+                    <th aria-sort="none"><button type="button" class="participant-sort-btn" data-sort="indonesian_accent">Accent / Variety<span class="sort-indicator" aria-hidden="true"> ↕</span></button></th>
+                    <th aria-sort="none"><button type="button" class="participant-sort-btn" data-sort="completed">Completed<span class="sort-indicator" aria-hidden="true"> ↕</span></button></th>
+                    <th aria-sort="none"><button type="button" class="participant-sort-btn" data-sort="percentage">Progress<span class="sort-indicator" aria-hidden="true"> ↕</span></button></th>
+                    <th aria-sort="none"><button type="button" class="participant-sort-btn" data-sort="total_duration_seconds">Total Duration<span class="sort-indicator" aria-hidden="true"> ↕</span></button></th>
+                    <th aria-sort="none"><button type="button" class="participant-sort-btn" data-sort="last_recording_time">Last Recording<span class="sort-indicator" aria-hidden="true"> ↕</span></button></th>
+                    <th aria-sort="none"><button type="button" class="participant-sort-btn" data-sort="admin_validated">Validated by Admin<span class="sort-indicator" aria-hidden="true"> ↕</span></button></th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="participants-table-body">
+                <tr>
+                    <td colspan="10">Loading...</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <div id="participant-detail-parking" class="hidden">
+    <section id="participant-detail-section" class="card hidden">
+        <h2>Participant Detail</h2>
+
+        <div id="participant-detail-info"></div>
+        <div class="info-box">
+            <button type="button" id="full-retake-btn" class="warning-btn">Back Up &amp; Request Full Retake</button>
+            <p>Creates a verified backup, resets all sentences for retake, and clears admin validation. The participant keeps their login and profile.</p>
+            <p id="full-retake-status" role="status"></p>
+            <a id="full-retake-download" class="hidden" download>Download backup before full retake</a>
+        </div>
+
+        <h3>Missing Sentences</h3>
+        <p id="missing-sentences"></p>
+
+        <h3>Recordings</h3>
+
+        <div class="bulk-retake-controls">
+            <label class="bulk-select-all">
+                <input type="checkbox" id="select-all-recordings">
+                Select all available recordings
+            </label>
+            <button type="button" id="bulk-retake-btn" class="warning-btn" disabled>
+                Request Retake for Selected
+            </button>
+            <span id="bulk-retake-count">0 selected</span>
+            <p id="bulk-retake-status" role="status"></p>
+        </div>
+
+        <div class="recordings-table-wrap">
+        <table id="recordings-table">
+            <colgroup>
+                <col class="recording-select-col">
+                <col class="recording-sentence-col">
+                <col class="recording-video-col">
+                <col class="recording-quality-col">
+                <col class="recording-actions-col">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Sentence</th>
+                    <th>Video preview</th>
+                    <th>Quality and note</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="recordings-table-body"></tbody>
+        </table>
+        </div>
+    </section>
+    </div>
+
+    </div>
+
+    <div id="credentials-page" class="hidden">
+        <section class="card">
+            <h2>Generate Participant Login</h2>
+            <p>Generate one participant ID and one random 6-character alphanumeric password.</p>
+            <button type="button" id="generate-credential-btn">Generate Participant Login</button>
+
+            <div id="generated-credential-box" class="info-box hidden"></div>
+        </section>
+
+        <section class="card">
+            <h2>Participant Login List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Participant ID</th>
+                        <th>Password</th>
+                        <th>Created At</th>
+                        <th>Information Filled</th>
+                    </tr>
+                </thead>
+                <tbody id="credentials-table-body">
+                    <tr>
+                        <td colspan="4">Loading...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+</div>
+
+<script src="/static/admin.js?v=20261023-5"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Participant Login - AV Recording</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container narrow-container">
+    <h1>Participant Login</h1>
+
+    <section class="card">
+        <form method="post" action="/participant/login">
+            <label>User ID</label>
+            <input type="text" name="participant_code" placeholder="Example: P0001" required>
+
+            <label>Password</label>
+            <input type="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+    </section>
+</div>
+
+</body>
+</html>

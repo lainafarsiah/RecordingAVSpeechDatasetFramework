@@ -1,0 +1,501 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f5f7;
+    margin: 0;
+    padding: 0;
+    color: #222;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 15px auto;
+    padding: 10px 20px;
+}
+
+.admin-page-container,
+.preprocessing-container,
+.report-container {
+    max-width: 1400px;
+}
+
+.narrow-container {
+    max-width: 520px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 15px 0 25px 0;
+    font-size: 42px;
+}
+
+.top-link {
+    text-align: right;
+}
+
+.admin-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.admin-nav button,
+.admin-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    margin: 0;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font: inherit;
+    font-weight: bold;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.admin-nav button:hover,
+.admin-nav a:hover {
+    background: #1d4ed8;
+}
+
+.admin-nav .active {
+    background: #1e3a8a;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.35);
+}
+
+@media (max-width: 700px) {
+    .admin-nav > * {
+        flex: 1 1 180px;
+    }
+}
+
+.disabled-link {
+    color: #777;
+    cursor: not-allowed;
+    pointer-events: none;
+    text-decoration: none;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px 35px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.hidden {
+    display: none;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 18px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+.button-link {
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 10px;
+    padding: 12px 18px;
+    font-size: 16px;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.button-link:hover {
+    background: #1d4ed8;
+}
+
+button:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+}
+
+.info-box {
+    background: #eef6ff;
+    border-left: 5px solid #2563eb;
+    padding: 12px;
+    margin-bottom: 20px;
+}
+
+.consent-box {
+    margin-top: 25px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background: #fafafa;
+    border-radius: 8px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: normal;
+}
+
+.checkbox-label input {
+    width: auto;
+}
+
+.signature-pad {
+    width: 100%;
+    height: 180px;
+    border: 2px solid #222;
+    border-radius: 8px;
+    background: white;
+    touch-action: none;
+}
+
+.pdf-frame {
+    width: 100%;
+    height: 82vh;
+    min-height: 760px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.participant-info {
+    margin-bottom: 15px;
+}
+
+.participant-info p {
+    margin: 8px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 18px;
+    background: #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #22c55e;
+    transition: width 0.3s ease;
+}
+
+.sentence-box {
+    text-align: center;
+    background: #f9fafb;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+}
+
+#sentence-id {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+    font-weight: bold;
+    color: #555;
+}
+
+#sentence-text {
+    font-size: 32px;
+    line-height: 1.35;
+    margin: 8px 0 0;
+    overflow-wrap: anywhere;
+}
+
+video {
+    width: 100%;
+    max-height: 480px;
+    background: black;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.button-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.pdf-frame {
+    width: 100%;
+    height: 82vh;
+    min-height: 760px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+}
+
+.signature-pad {
+    width: 100%;
+    max-width: 640px;
+    height: 180px;
+    display: block;
+    border: 2px solid #222;
+    border-radius: 8px;
+    background: white;
+    touch-action: none;
+}
+
+#status-message {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+#main-recording-btn {
+    width: 100%;
+    font-size: 22px;
+    padding: 18px;
+}
+
+.recording-active {
+    background: #dc2626 !important;
+}
+
+.success-btn {
+    background: #16a34a;
+}
+
+.success-btn:hover {
+    background: #15803d;
+}
+
+.warning-btn {
+    background: #f59e0b;
+}
+
+.warning-btn:hover {
+    background: #d97706;
+}
+
+#review-video {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 10px;
+    background: black;
+}
+
+.continue-box {
+    background: #f9fafb;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+hr {
+    margin: 25px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+.summary-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.summary-box {
+    flex: 1;
+    min-width: 180px;
+    background: #f9fafb;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.summary-box h3 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.summary-box p {
+    margin: 8px 0 0 0;
+    color: #555;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    vertical-align: top;
+}
+
+th {
+    background: #f3f4f6;
+    font-weight: bold;
+}
+
+td button {
+    margin-top: 0;
+    padding: 6px 10px;
+    font-size: 14px;
+}
+
+td input,
+td select {
+    font-size: 14px;
+    padding: 6px;
+}
+
+.small-progress-bar {
+    width: 100%;
+    height: 10px;
+    background: #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.small-progress-fill {
+    height: 100%;
+    background: #22c55e;
+}
+
+.video-review-box {
+    margin-top: 25px;
+    padding: 20px;
+    background: #f9fafb;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+#admin-review-video {
+    width: 100%;
+    max-height: 500px;
+    background: black;
+    border-radius: 10px;
+}
+
+/* Keep the reading prompt visible above a compact camera preview. */
+#recording-section .sentence-box {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+#preview {
+    display: block;
+    width: min(100%, 1110px, 112.64vh);
+    aspect-ratio: 16 / 9;
+    max-height: 63.36vh;
+    object-fit: contain;
+    margin: 12px auto 0;
+}
+
+#recording-section .button-row button {
+    margin-top: 12px;
+}
+
+@media (max-width: 600px) {
+    #recording-section {
+        padding: 16px;
+    }
+
+    #sentence-text {
+        font-size: 24px;
+    }
+}
+/* Inline admin participant details and recording previews. */
+.participant-detail-row > td { padding: 0; background: #f8fafc; }
+#participant-detail-section { margin: 0; padding: 20px; box-shadow: none; }
+#participant-detail-section table { table-layout: fixed; }
+#participant-detail-section td { overflow-wrap: anywhere; }
+#participant-detail-section input { margin-top: 8px; }
+#participant-detail-section button { margin-bottom: 6px; }
+.recording-preview { display: block; width: 100%; max-width: 280px; aspect-ratio: 16 / 9; object-fit: contain; margin: 0 0 8px; }
+.playback-status { margin: 4px 0; font-size: 12px; color: #b91c1c; }
+.recording-sentence p { margin: 8px 0; }
+#missing-sentences { max-height: 100px; overflow: auto; }
+@media (max-width: 700px) {
+    #participant-detail-section { padding: 8px; }
+    #recordings-table { min-width: 0; }
+    #recordings-table colgroup { display: none; }
+    #participant-detail-section table, #participant-detail-section tbody,
+    #participant-detail-section tr, #participant-detail-section td { display: block; width: 100%; }
+    #participant-detail-section thead { display: none; }
+    #recordings-table-body > tr { margin-bottom: 16px; border: 1px solid #cbd5e1; }
+}
+
+#participants-table .participant-sort-btn {
+    background: transparent; color: inherit; font-size: inherit; font-weight: bold;
+    margin: 0; padding: 4px; text-align: left;
+}
+#participants-table .participant-sort-btn:hover { background: #e2e8f0; }
+.participant-validation-label { display: flex; align-items: center; gap: 6px; margin: 0; font-weight: normal; }
+.participant-validation-label input { width: auto; margin: 0; cursor: pointer; }
+.validation-status { display: block; margin-top: 4px; }
+.bulk-retake-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    margin: 12px 0;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #f9fafb;
+}
+.bulk-retake-controls label,
+.bulk-retake-controls button { margin: 0; }
+.bulk-select-all { display: inline-flex; align-items: center; gap: 8px; }
+.bulk-select-all input { width: auto; margin: 0; }
+#bulk-retake-count { color: #475569; font-weight: bold; white-space: nowrap; }
+#bulk-retake-status { flex-basis: 100%; margin: 0; }
+.recording-retake-checkbox { width: 18px; height: 18px; }
+.recordings-table-wrap { width: 100%; overflow-x: auto; }
+#recordings-table { min-width: 980px; }
+#recordings-table .recording-select-col { width: 6%; }
+#recordings-table .recording-sentence-col { width: 27%; }
+#recordings-table .recording-video-col { width: 29%; }
+#recordings-table .recording-quality-col { width: 23%; }
+#recordings-table .recording-actions-col { width: 15%; }
+.recording-select-cell { text-align: center; }
+.recording-select-cell .recording-retake-checkbox { margin: 4px auto; }
+.recording-quality-cell input,
+.recording-quality-cell select { width: 100%; }
+.recording-actions-cell { overflow-wrap: normal !important; }
+.recording-actions-cell button { display: block; width: 100%; white-space: nowrap; }

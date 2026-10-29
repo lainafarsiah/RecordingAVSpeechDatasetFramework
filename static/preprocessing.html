@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recording Preprocessing</title>
+    <link rel="stylesheet" href="/static/style.css?v=20261023-2">
+    <link rel="stylesheet" href="/static/preprocessing.css?v=20261023-3">
+</head>
+<body>
+<div class="container preprocessing-container">
+    <h1>Recording Preprocessing</h1>
+    <nav class="admin-nav">
+        <a href="{{ADMIN_BASE_PATH}}?page=credentials">Participant Login</a>
+        <a href="{{ADMIN_BASE_PATH}}">Participant Progress</a>
+        <a href="{{ADMIN_BASE_PATH}}/report.html">Evaluation Reports</a>
+        <a href="{{ADMIN_BASE_PATH}}/preprocessing.html" class="active" aria-current="page">Preprocessing</a>
+        <a href="{{ADMIN_BASE_PATH}}/readiness.html">Data Readiness</a>
+        <a href="{{ADMIN_BASE_PATH}}/logout">Logout</a>
+    </nav>
+
+    <section class="card">
+        <h2>Participant Results</h2>
+        <p>Generate preprocessing results, open the latest result, or click a column heading to sort.</p>
+        <div id="page-message" class="info-box" role="status">Loading participants…</div>
+        <button id="refresh-btn" type="button">Refresh</button>
+
+        <div class="preprocessing-table-wrap">
+            <table id="preprocessing-table">
+                <thead>
+                <tr>
+                    <th aria-sort="none"><button type="button" class="preprocess-sort-btn" data-sort="participant_code">Participant<span class="sort-indicator" aria-hidden="true"> ↕</span></button></th>
+                    <th aria-sort="none"><button type="button" class="preprocess-sort-btn" data-sort="recordings">Recordings<span class="sort-indicator" aria-hidden="true"> ↕</span></button></th>
+                    <th aria-sort="none"><button type="button" class="preprocess-sort-btn" data-sort="status">Status<span class="sort-indicator" aria-hidden="true"> ↕</span></button></th>
+                    <th aria-sort="none"><button type="button" class="preprocess-sort-btn" data-sort="progress">Progress<span class="sort-indicator" aria-hidden="true"> ↕</span></button></th>
+                    <th aria-sort="none"><button type="button" class="preprocess-sort-btn" data-sort="wer">Overall WER / CER<span class="sort-indicator" aria-hidden="true"> ↕</span></button></th>
+                    <th aria-sort="none"><button type="button" class="preprocess-sort-btn" data-sort="generated">Generated<span class="sort-indicator" aria-hidden="true"> ↕</span></button></th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody id="preprocessing-body">
+                <tr><td colspan="7">Loading…</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <div id="job-detail-parking" class="hidden">
+    <section id="job-detail" class="preprocess-detail-panel hidden">
+        <h2>Preprocessing Results</h2>
+        <div id="job-summary"></div>
+        <div class="preprocessing-table-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th>Sentence</th>
+                    <th>Result</th>
+                    <th>Transcript verification</th>
+                    <th>Quality</th>
+                    <th>Original and cleaned video</th>
+                </tr>
+                </thead>
+                <tbody id="result-body"></tbody>
+            </table>
+        </div>
+    </section>
+    </div>
+</div>
+<script src="/static/preprocessing.js?v=20261024-1"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dataset Readiness</title>
+    <link rel="stylesheet" href="/static/style.css?v=20261023-2">
+    <link rel="stylesheet" href="/static/readiness.css?v=20261029-1">
+</head>
+<body>
+<div class="container readiness-container">
+    <h1>Dataset Readiness</h1>
+    <nav class="admin-nav">
+        <a href="{{ADMIN_BASE_PATH}}?page=credentials">Participant Login</a>
+        <a href="{{ADMIN_BASE_PATH}}">Participant Progress</a>
+        <a href="{{ADMIN_BASE_PATH}}/report.html">Evaluation Reports</a>
+        <a href="{{ADMIN_BASE_PATH}}/preprocessing.html">Preprocessing</a>
+        <a href="{{ADMIN_BASE_PATH}}/readiness.html" class="active" aria-current="page">Data Readiness</a>
+        <a href="{{ADMIN_BASE_PATH}}/logout">Logout</a>
+    </nav>
+
+    <section class="card">
+        <div class="readiness-heading">
+            <div>
+                <h2>Participant Exports</h2>
+                <p>View synchronized full-frame video, audio, reference text, face, and mouth outputs.</p>
+            </div>
+            <button id="readiness-refresh" type="button">Refresh</button>
+        </div>
+        <div id="readiness-message" class="info-box" role="status">Loading participants…</div>
+        <div class="readiness-table-wrap">
+            <table id="readiness-table">
+                <thead><tr>
+                    <th aria-sort="none"><button class="readiness-sort" data-sort="participant_code" type="button">Participant <span>↕</span></button></th>
+                    <th aria-sort="none"><button class="readiness-sort" data-sort="recordings" type="button">Recordings <span>↕</span></button></th>
+                    <th aria-sort="none"><button class="readiness-sort" data-sort="status" type="button">Status <span>↕</span></button></th>
+                    <th aria-sort="none"><button class="readiness-sort" data-sort="progress" type="button">Progress <span>↕</span></button></th>
+                    <th aria-sort="none"><button class="readiness-sort" data-sort="generated" type="button">Generated <span>↕</span></button></th>
+                    <th>Action</th>
+                </tr></thead>
+                <tbody id="readiness-body"><tr><td colspan="6">Loading…</td></tr></tbody>
+            </table>
+        </div>
+    </section>
+
+    <div id="readiness-detail-parking" class="hidden">
+        <section id="readiness-detail" class="readiness-detail hidden">
+            <div class="readiness-heading">
+                <h2 id="readiness-detail-title">Export Results</h2>
+                <input id="readiness-filter" type="search" placeholder="Filter sentence ID or text" aria-label="Filter recordings">
+            </div>
+            <div id="readiness-job-summary"></div>
+            <div id="readiness-records"></div>
+        </section>
+    </div>
+</div>
+<script src="/static/readiness.js?v=20261029-1"></script>
+</body>
+</html>

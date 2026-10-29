@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Audio-Visual Sentence Recording</title>
+    <link rel="stylesheet" href="/static/style.css?v=20260916-6">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Audio-Visual Sentence Recording</h1>
+        <p class="top-link"><a href="/participant/logout">Logout</a></p>
+
+        <section id="session-loading-section" class="card" aria-live="polite">
+            <p id="session-loading-message" role="status">Loading your session...</p>
+            <button id="retry-session-btn" type="button" class="hidden">Try Again</button>
+        </section>
+
+        <!-- Participant Form -->
+        <section id="participant-section" class="card hidden">
+            <h2>Participant Information</h2>
+            <p><strong>Participant Code:</strong> <span id="form-participant-code-display"></span></p>
+
+            <div class="info-box">
+                <h2><strong>Instructions:</strong></h2>
+                <p>
+                    <strong>Before you begin recording, please ensure that:</strong>
+                    <span class="translation-header">(Sebelum memulai perekaman, mohon pastikan bahwa:)</span>
+                </p>
+
+                <ol>
+                    <li>
+                        You are using a laptop or tablet with a properly functioning camera and microphone. <br>
+                        <span class="translation">(Anda menggunakan laptop atau tablet dengan kamera dan mikrofon
+                            yang berfungsi dengan baik.)</span>
+                    </li>
+                    <li>
+                        Your internet connection is stable. <br>
+                        <span class="translation">(Koneksi internet Anda stabil.)</span>
+                    </li>
+                    <li>
+                        You record in a quiet, well-lit location with no background noise. <br>
+                        <span class="translation">(Anda melakukan perekaman di tempat yang tenang, tanpa suara
+                            bising, dan memiliki pencahayaan yang baik.)</span>
+                    </li>
+                    <li>
+                        Your face remains clearly visible, fully within the frame, and unobstructed throughout the
+                        recording. <br>
+                        <span class="translation">(Wajah Anda tetap terlihat jelas, sepenuhnya berada dalam bingkai
+                            kamera, dan tidak tertutup selama perekaman.)</span>
+                    </li>
+                    <li>
+                        You sit comfortably and maintain a consistent distance from your laptop or tablet. <br>
+                        <span class="translation">(Anda duduk dengan nyaman dan menjaga jarak yang tetap dari laptop
+                            atau tablet.)</span>
+                    </li>
+                    <li>
+                        You read each sentence accurately, clearly, and naturally, at your usual conversational pace.
+                        <br>
+                        <span class="translation">(Anda membaca setiap kalimat dengan benar, jelas, dan alami, dengan
+                            kecepatan seperti saat berbicara sehari-hari.)</span>
+                    </li>
+                    <li>
+                        If you accidentally save an incorrect recording, please notify the administrator so it can be
+                        deleted. <br>
+                        <span class="translation">(Jika Anda tidak sengaja menyimpan rekaman yang salah, mohon beri
+                            tahu admin agar rekaman tersebut dapat dihapus.)</span>
+                    </li>
+                    <li>
+                        Once you have finished recording all assigned sentences, the administrator will review your
+                        recordings. Any recordings that do not meet the requirements will be deleted, and the
+                        administrator will email you to request that you record those sentences again. <br>
+                        <span class="translation">(Setelah Anda selesai merekam seluruh kalimat yang diberikan, admin akan
+                            memeriksa rekaman Anda. Rekaman yang tidak memenuhi persyaratan akan dihapus, dan admin akan
+                            mengirimkan email untuk meminta Anda merekam ulang kalimat-kalimat tersebut.)</span>
+                    </li>
+                </ol>
+            </div>
+
+            <form id="participant-form">
+                <label>Age Group</label>
+                <select id="age_group" required>
+                    <option value="">Select age group</option>
+                    <option value="18-25">18-25</option>
+                    <option value="26-35">26-35</option>
+                    <option value="36-45">36-45</option>
+                    <option value="46-55">46-55</option>
+                    <option value="56+">56+</option>
+                </select>
+
+                <label>Gender</label>
+                <select id="gender" required>
+                    <option value="">Select gender</option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                </select>
+
+                <label for="indonesian_accent">What accent or variety of Indonesian is most dominant when you speak?
+                    (Aksen atau ragam
+                    Bahasa Indonesia apa yang paling dominan ketika Anda berbicara?)</label>
+                <select id="indonesian_accent" name="indonesian_accent" required>
+                    <option value="">Select Indonesian accent or variety</option>
+                    <option value="baku_netral">A. Indonesia baku/netral – Tidak ada pengaruh aksen daerah yang terasa
+                        dominan.</option>
+                    <option value="jakarta_betawi">B. Jakarta/Betawi/perkotaan Jabodetabek</option>
+                    <option value="sunda">C. Sunda – Jawa Barat dan penutur Sunda di Banten.</option>
+                    <option value="jawa_tengah_diy">D. Jawa Tengah/Yogyakarta</option>
+                    <option value="jawa_timur">E. Jawa Timur</option>
+                    <option value="madura">F. Madura</option>
+                    <option value="aceh">G. Aceh</option>
+                    <option value="sumatra_utara">H. Sumatra Utara – Medan, Batak, Mandailing, Nias, atau Melayu Deli.
+                    </option>
+                    <option value="minangkabau">I. Minangkabau/Sumatra Barat</option>
+                    <option value="riau_kepri">J. Riau/Kepulauan Riau</option>
+                    <option value="jambi_sumsel_bengkulu">K. Jambi/Sumatra Selatan/Bengkulu</option>
+                    <option value="lampung">L. Lampung</option>
+                    <option value="bangka_belitung">M. Bangka Belitung</option>
+                    <option value="kalimantan_barat">N. Kalimantan Barat – Melayu Kalimantan Barat, Dayak, dan ragam
+                        setempat.</option>
+                    <option value="kalimantan_tengah_selatan">O. Kalimantan Tengah/Selatan – Termasuk Banjar dan ragam
+                        Dayak setempat.
+                    </option>
+                    <option value="kalimantan_timur_utara">P. Kalimantan Timur/Utara</option>
+                    <option value="sulawesi_utara_gorontalo">Q. Sulawesi Utara/Gorontalo – Termasuk Manado dan Minahasa.
+                    </option>
+                    <option value="sulawesi_tengah">R. Sulawesi Tengah</option>
+                    <option value="sulawesi_selatan_barat">S. Sulawesi Selatan/Barat – Makassar, Bugis, Toraja, atau
+                        Mandar.</option>
+                    <option value="sulawesi_tenggara">T. Sulawesi Tenggara</option>
+                    <option value="bali">U. Bali</option>
+                    <option value="nusa_tenggara_barat">V. Nusa Tenggara Barat – Sasak, Sumbawa, atau Bima.</option>
+                    <option value="nusa_tenggara_timur">W. Nusa Tenggara Timur</option>
+                    <option value="maluku">X. Maluku/Maluku Utara</option>
+                    <option value="papua">Y. Papua</option>
+                    <option value="campuran">Z. Campuran</option>
+                    <option value="lainnya">AA. Lainnya</option>
+                    <option value="tidak_yakin">AB. Tidak yakin</option>
+                </select>
+
+                <label for="public_speaking_ability">How would you rate your public speaking ability?
+                    <br><em>(Bagaimana Anda menilai kemampuan berbicara di depan umum yang Anda miliki?)</em></label>
+                <select id="public_speaking_ability" name="public_speaking_ability" required>
+                    <option value="">Select public speaking ability</option>
+                    <option value="A">A. Poor (Kurang baik)</option>
+                    <option value="B">B. Fair (Cukup)</option>
+                    <option value="C">C. Good (Baik)</option>
+                    <option value="D">D. Very good (Sangat baik)</option>
+                </select>
+
+                <label for="communication_style">How would you describe your usual communication style?
+                    <br><em>(Bagaimana Anda menggambarkan gaya komunikasi Anda sehari-hari?)</em></label>
+                <select id="communication_style" name="communication_style" required>
+                    <option value="">Select communication style</option>
+                    <option value="A">A. Very quiet (Sangat pendiam)</option>
+                    <option value="B">B. Somewhat quiet (Cenderung pendiam)</option>
+                    <option value="C">C. Somewhat talkative (Cukup suka berbicara)</option>
+                    <option value="D">D. Very talkative (Sangat suka berbicara)</option>
+                </select>
+
+                <button id="start-session-btn" type="submit">Start Recording</button>
+                <p id="participant-status" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <!-- Recording Section -->
+        <section id="recording-section" class="card hidden">
+            <h2>Recording Session</h2>
+
+            <div class="participant-info">
+                <p><strong>Participant Code:</strong> <span id="participant-code-display"></span></p>
+                <p><strong>Progress:</strong> <span id="progress-text">0 / 0</span></p>
+                <div class="progress-bar">
+                    <div id="progress-fill"></div>
+                </div>
+            </div>
+
+            <div class="sentence-box">
+                <p id="sentence-id">Sentence ID</p>
+                <h3 id="sentence-text">Sentence text will appear here.</h3>
+            </div>
+
+            <video id="preview" autoplay muted playsinline></video>
+
+            <div class="button-row">
+                <button id="main-recording-btn">Start Recording</button>
+                <button id="save-btn" class="success-btn hidden">Save & Continue</button>
+                <button id="record-again-btn" class="warning-btn hidden">Record Again</button>
+            </div>
+
+            <video id="review-video" class="hidden" controls playsinline preload="metadata"></video>
+
+            <p id="status-message"></p>
+        </section>
+
+        <!-- Finished Section -->
+        <section id="finished-section" class="card hidden">
+            <h2>Recording Finished</h2>
+            <p>Thank you. All sentences have been recorded successfully.</p>
+        </section>
+
+    </div>
+
+    <script src="/static/app.js?v=20261023-10"></script>
+</body>
+
+</html>
