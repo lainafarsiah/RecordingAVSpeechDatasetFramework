@@ -1,5 +1,10 @@
 # Audio-Visual Sentence Recording Framework
 
+[![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Framework-009688?logo=fastapi)](https://fastapi.tiangolo.com/)
+[![FFmpeg](https://img.shields.io/badge/FFmpeg-Required-007808?logo=ffmpeg)](https://ffmpeg.org/)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+
 A self-hosted browser application for collecting prompted audio-visual speech,
 reviewing participant progress, requesting retakes, evaluating recordings with
 ASR and technical checks, generating noise-reduced derivatives, producing
